@@ -159,6 +159,11 @@ jobs:
         goarch: [386, riscv64]
 
         include:
+          # BEGIN Linux ARMv7
+          - goos: linux
+            goarch: arm
+            goarm: 7
+          # END Linux ARMv7
           # BEGIN Linux ARM64
           - goos: linux
             goarch: arm64
@@ -199,6 +204,7 @@ jobs:
     env:
       GOOS: ${{ matrix.goos }}
       GOARCH: ${{ matrix.goarch }}
+      GOARM: ${{ matrix.goarm }}
       GOAMD64: ${{ matrix.goamd64 }}
       CGO_ENABLED: ${{ matrix.cgo_enabled || 0 }}
       CC: ${{ matrix.cc }}
